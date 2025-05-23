@@ -1,0 +1,40 @@
+.product__list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.product__item {
+    flex: 1 1 calc(33.333% - 20px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+.product__item:hover {
+    transform: translateY(-5px);
+}
+.product__image {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 4/3;
+    //aspect-ratio là một thuộc tính CSS cho phép bạn xác định tỷ lệ khung hình của phần tử
+    // overflow: hidden;
+    //overflow: hidden; sẽ ẩn bất kỳ nội dung nào vượt quá kích thước của phần tử cha
+}
+.product__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.product__title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.product__price {
+    color: #f00;
+}
+.product__discount {
+    color: #999;
+}
