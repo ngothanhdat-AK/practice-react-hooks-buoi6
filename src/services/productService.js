@@ -23,7 +23,7 @@ export const createProduct = async (data) => {
     return result;
 };
 
-export const updateProduct = async (id, data) => {
+export const editProduct = async (id, data) => {
   const response = await fetch(`http://localhost:3002/products/${id}`, {
     method: "PUT",
     headers: {

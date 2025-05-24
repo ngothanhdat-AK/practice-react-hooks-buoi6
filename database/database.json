@@ -1735,16 +1735,6 @@
         "https://cdn.dummyjson.com/product-images/groceries/kiwi/1.webp"
       ],
       "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/kiwi/thumbnail.webp"
-    },
-    {
-      "title": "áddasdâsasas",
-      "price": "12",
-      "discount": "12",
-      "stock": "12",
-      "thumbnail": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Phone/Apple/iPhone-16/cate-iphone-16-series-38.jpg",
-      "description": "12",
-      "id": 31,
-      "discountPercentage": "11212"
     }
   ],
   "categories": [

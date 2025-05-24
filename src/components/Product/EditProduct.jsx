@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import Modal from "react-modal";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
+import {editProduct} from "../../services/productService";
 
 const customStyles = {
   content: {
@@ -36,37 +37,45 @@ const EditProduct = ({onReload, item}) => {
           setDataCategory(data);
         });
     };
-    const fetchApiProductId = () => {
-      fetch(`http://localhost:3002/products/${item.id}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setData(data);
-        });
-    };
-    fetchApiProductId();
     fetchData();
   }, [item.id]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); // Ngăn chặn hành vi mặc định của form
     /* updating title of product with id 1 */
-    fetch(`http://localhost:3002/products/${item.id}`, {
-      method: "PUT" /* or PATCH */,
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data) {
-          closeModal();
-          onReload();
-          Swal.fire({
-            title: "Edit product",
-            text: "You clicked the button!",
-            icon: "success",
-          });
-        }
+    // fetch(`http://localhost:3002/products/${item.id}`, {
+    //   method: "PUT" /* or PATCH */,
+    //   headers: {"Content-Type": "application/json"},
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     if (data) {
+    //       closeModal();
+    //       onReload();
+    //       Swal.fire({
+    //         title: "Edit product",
+    //         text: "You clicked the button!",
+    //         icon: "success",
+    //       });
+    //     }
+    //   });
+    const result = await editProduct(item.id, data);
+    if (result) {
+      closeModal();
+      onReload();
+      Swal.fire({
+        title: "Edit product",
+        text: "You clicked the button!",
+        icon: "success",
       });
+    } else {
+      Swal.fire({
+        title: "Error",
+        text: "Failed to edit product",
+        icon: "error",
+      });
+    }
   };
 
   const handleChange = (e) => {
