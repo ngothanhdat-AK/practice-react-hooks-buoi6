@@ -3,6 +3,7 @@ import "./Product.scss";
 import DeleteProduct from "./DeleteProduct";
 import CreateProduct from "./CreateProduct";
 import EditProduct from "./EditProduct";
+import {getAllProducts} from "../../services/productService";
 const Product = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -11,16 +12,21 @@ const Product = () => {
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
-    const fetchData = () => {
-      fetch("http://localhost:3002/products")
-        .then((res) => res.json())
-        .then((data) => {
-          //   console.log(data);
-          setData(data.reverse());
-          setLoading(false);
-        });
+    // const fetchData = () => {
+    //   fetch("http://localhost:3002/products")
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       //   console.log(data);
+    //       setData(data.reverse());
+    //       setLoading(false);
+    //     });
+    // };
+    const fetchApi = async () => {
+      const result = await getAllProducts();
+      setData(result.reverse());
+      setLoading(false);
     };
-    fetchData();
+    fetchApi();
   }, [deleteReload, editReload, reload]);
 
   setTimeout(() => {
@@ -54,7 +60,7 @@ const Product = () => {
               <h4 className="product__title">{item.title}</h4>
               <p className="product__price">Giá: {item.price}$</p>
               <p className="product__discount"> {item.discountPercentage}%</p>
-              <EditProduct idProduct={item.id} onReload={handleEditReload} />
+              <EditProduct item={item} onReload={handleEditReload} />
               <DeleteProduct
                 idProduct={item.id}
                 onReload={handleDeleteReload}

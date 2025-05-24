@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from "react";
 import Modal from "react-modal";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
+import { createProduct } from "../../services/productService";
 
 const customStyles = {
   content: {
@@ -36,15 +39,36 @@ const CreateProduct = ({onReload}) => {
     fetchData();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); // Ngăn chặn hành vi mặc định của form
-    fetch("http://localhost:3002/products/", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(data),
-    });
-    closeModal();
-    onReload();
+    // fetch("http://localhost:3002/products/", {
+    //   method: "POST",
+    //   headers: {"Content-Type": "application/json"},
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     if (data) {
+    //       closeModal();
+    //       onReload();
+    //       Swal.fire({
+    //         title: "Create new product",
+    //         text: "You clicked the button!",
+    //         icon: "success",
+    //       });
+    //     }
+    //   });
+
+    const result = await createProduct(data);
+    if (result) { 
+      closeModal();
+      onReload();
+      Swal.fire({
+        title: "Create new product",
+        text: "You clicked the button!",
+        icon: "success",
+      });
+    }
   };
 
   const handleChange = (e) => {

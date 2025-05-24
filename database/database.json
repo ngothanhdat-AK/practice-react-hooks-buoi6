@@ -1737,60 +1737,14 @@
       "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/kiwi/thumbnail.webp"
     },
     {
-      "title": "s",
-      "price": "s",
-      "discount": "s",
-      "stock": "s",
+      "title": "áddasdâsasas",
+      "price": "12",
+      "discount": "12",
+      "stock": "12",
       "thumbnail": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Phone/Apple/iPhone-16/cate-iphone-16-series-38.jpg",
-      "description": "s",
-      "id": 31
-    },
-    {
-      "title": "sss",
-      "category": "Skin Care",
-      "price": "s",
-      "discount": "s",
-      "stock": "s",
-      "thumbnail": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Phone/Apple/iPhone-16/cate-iphone-16-series-38.jpg",
-      "description": "sádas",
-      "id": 32
-    },
-    {
-      "title": "sss",
-      "category": "Skin Care",
-      "price": "s",
-      "discount": "s",
-      "stock": "s",
-      "thumbnail": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Phone/Apple/iPhone-16/cate-iphone-16-series-38.jpg",
-      "description": "sádas",
-      "id": 33
-    },
-    {
-      "title": "sadasdasdas",
-      "price": "ádasdasd",
-      "discount": "adasd",
-      "stock": "ádads",
-      "thumbnail": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Phone/Apple/iPhone-16/cate-iphone-16-series-38.jpg",
-      "description": "a",
-      "id": 34
-    },
-    {
-      "title": "âsda",
-      "price": "sdasdas",
-      "discount": "đâs",
-      "stock": "dsads",
-      "thumbnail": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Phone/Apple/iPhone-16/cate-iphone-16-series-38.jpg",
-      "description": "asaad",
-      "id": 35
-    },
-    {
-      "title": "haha1",
-      "price": "adsasdasdas",
-      "discount": "ádasdasd",
-      "stock": "ádasd",
-      "thumbnail": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Phone/Apple/iPhone-16/cate-iphone-16-series-38.jpg",
-      "description": "adsadasd",
-      "id": 36
+      "description": "12",
+      "id": 31,
+      "discountPercentage": "11212"
     }
   ],
   "categories": [

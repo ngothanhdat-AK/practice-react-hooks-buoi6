@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Modal from "react-modal";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
 
 const customStyles = {
   content: {
@@ -11,11 +13,12 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
   },
 };
-const EditProduct = ({onReload, idProduct}) => {
+const EditProduct = ({onReload, item}) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [dataCategory, setDataCategory] = useState([]);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(item);
 
+  console.log(item);
   function openModal() {
     setIsOpen(true);
   }
@@ -34,7 +37,7 @@ const EditProduct = ({onReload, idProduct}) => {
         });
     };
     const fetchApiProductId = () => {
-      fetch(`http://localhost:3002/products/${idProduct}`)
+      fetch(`http://localhost:3002/products/${item.id}`)
         .then((res) => res.json())
         .then((data) => {
           setData(data);
@@ -42,18 +45,28 @@ const EditProduct = ({onReload, idProduct}) => {
     };
     fetchApiProductId();
     fetchData();
-  }, [idProduct]);
+  }, [item.id]);
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Ngăn chặn hành vi mặc định của form
     /* updating title of product with id 1 */
-    fetch(`http://localhost:3002/products/${idProduct}`, {
+    fetch(`http://localhost:3002/products/${item.id}`, {
       method: "PUT" /* or PATCH */,
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(data),
-    });
-    closeModal();
-    onReload();
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          closeModal();
+          onReload();
+          Swal.fire({
+            title: "Edit product",
+            text: "You clicked the button!",
+            icon: "success",
+          });
+        }
+      });
   };
 
   const handleChange = (e) => {
@@ -85,7 +98,7 @@ const EditProduct = ({onReload, idProduct}) => {
                     type="text"
                     name="title"
                     onChange={handleChange}
-                    value={data.title}
+                    value={data.title || ""}
                   />
                 </td>
               </tr>
@@ -96,7 +109,7 @@ const EditProduct = ({onReload, idProduct}) => {
                     <select
                       name="category"
                       onChange={handleChange}
-                      value={data.category}
+                      value={data.category || ""}
                     >
                       {(dataCategory || []).map((item, index) => (
                         <option key={index}>{item.name}</option>
@@ -111,10 +124,10 @@ const EditProduct = ({onReload, idProduct}) => {
                 <td>Giá</td>
                 <td>
                   <input
-                    type="text"
+                    type="number"
                     name="price"
                     onChange={handleChange}
-                    value={data.price}
+                    value={data.price || ""}
                   />
                 </td>
               </tr>
@@ -122,10 +135,10 @@ const EditProduct = ({onReload, idProduct}) => {
                 <td>Giảm giá</td>
                 <td>
                   <input
-                    type="text"
-                    name="discount"
+                    type="number"
+                    name="discountPercentage"
                     onChange={handleChange}
-                    value={data.discount}
+                    value={data.discountPercentage || ""}
                   />
                 </td>
               </tr>
@@ -133,10 +146,10 @@ const EditProduct = ({onReload, idProduct}) => {
                 <td>Số lượng còn lại</td>
                 <td>
                   <input
-                    type="text"
+                    type="number"
                     name="stock"
                     onChange={handleChange}
-                    value={data.stock}
+                    value={data.stock || ""}
                   />
                 </td>
               </tr>
@@ -147,7 +160,7 @@ const EditProduct = ({onReload, idProduct}) => {
                     type="text"
                     name="thumbnail"
                     onChange={handleChange}
-                    value={data.thumbnail}
+                    value={data.thumbnail || ""}
                   />
                 </td>
               </tr>
@@ -160,7 +173,7 @@ const EditProduct = ({onReload, idProduct}) => {
                     cols="30"
                     rows="5"
                     onChange={handleChange}
-                    value={data.description}
+                    value={data.description || ""}
                   ></textarea>
                 </td>
               </tr>
