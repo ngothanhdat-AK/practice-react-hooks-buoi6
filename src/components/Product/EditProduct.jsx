@@ -60,11 +60,11 @@ const EditProduct = ({onReload, idProduct}) => {
     // console.log(e.target.name);
     const name = e.target.name;
     const value = e.target.value;
-    console.log(name, value);
+    // console.log(name, value);
 
     setData({...data, [name]: value});
   };
-  console.log(data);
+  // console.log(data);
   //   console.log(dataCategory);
   return (
     <>
